@@ -33,48 +33,6 @@ export const metadata: Metadata = {
   },
 }
 
-const blogCollectionJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  name: "Text Language School Blog",
-  description: "İngilizce öğrenme yolculuğunuzda size rehberlik edecek makaleler, ipuçları ve stratejiler.",
-  url: "https://www.textlanguageschool.net/blog",
-  isPartOf: {
-    "@type": "WebSite",
-    name: "Text Language School",
-    url: "https://www.textlanguageschool.net",
-  },
-  mainEntity: {
-    "@type": "ItemList",
-    itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        url: "https://www.textlanguageschool.net/blog/kisiye-ozel-macera",
-        name: "Dil Ogrenmek Neden Kisiye Ozel Bir Macera Olmali?",
-      },
-      {
-        "@type": "ListItem",
-        position: 2,
-        url: "https://www.textlanguageschool.net/blog/dil-ogrenme-pazari",
-        name: "Dil Ogrenme Pazari ve Bilimsel Gercekler",
-      },
-      {
-        "@type": "ListItem",
-        position: 3,
-        url: "https://www.textlanguageschool.net/blog/ogrenme-yolculugu",
-        name: "Ogrenme Yolculugu: Meraktan Gelisime",
-      },
-      {
-        "@type": "ListItem",
-        position: 4,
-        url: "https://www.textlanguageschool.net/blog/4-3-2-teknigi",
-        name: 'Konusma Akiciligini Artirmada "4-3-2" Teknigi',
-      },
-    ],
-  },
-}
-
 const blogPosts = [
   {
     title: "Dil Öğrenmek Neden Kişiye Özel Bir Macera Olmalı?",

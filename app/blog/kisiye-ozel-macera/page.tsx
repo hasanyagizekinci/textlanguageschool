@@ -21,33 +21,6 @@ export const metadata = {
   },
 }
 
-const articleJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "Dil Öğrenmek Neden Kişiye Özel Bir Macera Olmalı?",
-  description: "Dil öğrenmenin neden tamamen sizinle ilgili olması gerektiğini keşfedin.",
-  datePublished: "2026-01-10T00:00:00.000Z",
-  dateModified: "2026-01-10T00:00:00.000Z",
-  author: {
-    "@type": "Organization",
-    name: "Text Language School",
-    url: "https://www.textlanguageschool.net",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "Text Language School",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://www.textlanguageschool.net/logo.png",
-    },
-  },
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": "https://www.textlanguageschool.net/blog/kisiye-ozel-macera",
-  },
-  inLanguage: "tr",
-}
-
 export default function BlogPost() {
   return (
     <>

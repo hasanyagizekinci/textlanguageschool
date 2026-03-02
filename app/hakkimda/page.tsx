@@ -32,25 +32,6 @@ export const metadata: Metadata = {
   },
 }
 
-const personJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  name: "Text Language School Eğitmeni",
-  jobTitle: "İngilizce Eğitmeni / Filolog",
-  description: "İngiliz Dili ve Edebiyatı mezunu, deneyimli İngilizce eğitmeni.",
-  url: "https://www.textlanguageschool.net/hakkimda",
-  worksFor: {
-    "@type": "Organization",
-    name: "Text Language School",
-    url: "https://www.textlanguageschool.net",
-  },
-  knowsLanguage: ["tr", "en"],
-  alumniOf: {
-    "@type": "CollegeOrUniversity",
-    name: "Ingiliz Dili ve Edebiyati Bolumu",
-  },
-}
-
 export default function HakkimdaPage() {
   return (
     <>

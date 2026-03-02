@@ -19,19 +19,6 @@ interface FAQSectionProps {
 export function FAQSection({ title = "Sık Sorulan Sorular", subtitle, items, className }: FAQSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
 
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: items.map((item) => ({
-      "@type": "Question",
-      name: item.question,
-      acceptedAnswer: {
-        "@type": "Answer",
-        text: item.answer,
-      },
-    })),
-  }
-
   return (
     <section className={cn("py-24 md:py-32", className)}>
       <div className="container mx-auto px-4">

@@ -21,33 +21,6 @@ export const metadata = {
   },
 }
 
-const articleJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: 'Konuşma Akıcılığını Artırmada "4-3-2" Tekniği',
-  description: "İngilizce konuşma akıcılığını geliştirmek için bilimsel olarak kanıtlanmış etkili bir teknik.",
-  datePublished: "2025-12-15T00:00:00.000Z",
-  dateModified: "2025-12-15T00:00:00.000Z",
-  author: {
-    "@type": "Organization",
-    name: "Text Language School",
-    url: "https://www.textlanguageschool.net",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "Text Language School",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://www.textlanguageschool.net/logo.png",
-    },
-  },
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": "https://www.textlanguageschool.net/blog/4-3-2-teknigi",
-  },
-  inLanguage: "tr",
-}
-
 export default function BlogPost() {
   return (
     <>

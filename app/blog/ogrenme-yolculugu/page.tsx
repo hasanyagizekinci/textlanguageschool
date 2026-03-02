@@ -21,33 +21,6 @@ export const metadata = {
   },
 }
 
-const articleJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Article",
-  headline: "Öğrenme Yolculuğu: Meraktan Gelişime",
-  description: "Öğrenme sürecinin evreleri ve dil öğrenmenin benzersiz doğası hakkında.",
-  datePublished: "2025-12-18T00:00:00.000Z",
-  dateModified: "2025-12-18T00:00:00.000Z",
-  author: {
-    "@type": "Organization",
-    name: "Text Language School",
-    url: "https://www.textlanguageschool.net",
-  },
-  publisher: {
-    "@type": "Organization",
-    name: "Text Language School",
-    logo: {
-      "@type": "ImageObject",
-      url: "https://www.textlanguageschool.net/logo.png",
-    },
-  },
-  mainEntityOfPage: {
-    "@type": "WebPage",
-    "@id": "https://www.textlanguageschool.net/blog/ogrenme-yolculugu",
-  },
-  inLanguage: "tr",
-}
-
 export default function BlogPost() {
   return (
     <>
