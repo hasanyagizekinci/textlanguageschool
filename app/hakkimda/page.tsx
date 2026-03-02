@@ -1,4 +1,3 @@
-import Script from "next/script"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { GraduationCap, Briefcase, Heart, Award, Sparkles } from "lucide-react"
@@ -56,9 +55,6 @@ export default function HakkimdaPage() {
   return (
     <>
       <Navigation />
-      <Script id="ld-person" type="application/ld+json" strategy="beforeInteractive">
-        {JSON.stringify(personJsonLd)}
-      </Script>
       <main className="min-h-screen pt-20">
         <section className="py-20 md:py-32 bg-gradient-to-b from-primary/10 via-secondary/5 to-background relative overflow-hidden">
           {/* Quirky floating elements */}

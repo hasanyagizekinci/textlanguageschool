@@ -1,7 +1,6 @@
 "use client"
 
 import { useState } from "react"
-import Script from "next/script"
 import { ChevronDown, HelpCircle } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -35,9 +34,6 @@ export function FAQSection({ title = "Sık Sorulan Sorular", subtitle, items, cl
 
   return (
     <section className={cn("py-24 md:py-32", className)}>
-      <Script id="ld-faq-section" type="application/ld+json" strategy="beforeInteractive">
-        {JSON.stringify(faqJsonLd)}
-      </Script>
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">

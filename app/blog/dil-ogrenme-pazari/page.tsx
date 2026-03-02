@@ -1,4 +1,3 @@
-import Script from "next/script"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Calendar, Clock, ArrowLeft } from "lucide-react"
@@ -54,9 +53,6 @@ export default function BlogPost() {
     <>
       <Navigation />
       <main className="min-h-screen pt-20">
-        <Script id="ld-article-dil" type="application/ld+json" strategy="beforeInteractive">
-          {JSON.stringify(articleJsonLd)}
-        </Script>
         <article className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">

@@ -1,5 +1,4 @@
 import type { Metadata } from "next"
-import Script from "next/script"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { Card, CardContent } from "@/components/ui/card"
@@ -119,9 +118,6 @@ export default function BlogPage() {
   return (
     <>
       <Navigation />
-      <Script id="ld-blog-collection" type="application/ld+json" strategy="beforeInteractive">
-        {JSON.stringify(blogCollectionJsonLd)}
-      </Script>
       <main className="min-h-screen pt-20">
         <section className="py-24 md:py-32 bg-gradient-to-b from-primary/5 to-background relative overflow-hidden">
           {/* Decorative elements */}

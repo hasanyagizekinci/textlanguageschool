@@ -1,4 +1,3 @@
-import Script from "next/script"
 import { Navigation } from "@/components/navigation"
 import { Footer } from "@/components/footer"
 import { FAQSection } from "@/components/faq-section"
@@ -196,11 +195,6 @@ export default function DerslerPage() {
   return (
     <>
       <Navigation />
-      {courseJsonLd.map((schema, i) => (
-        <Script key={i} id={`ld-course-${i}`} type="application/ld+json" strategy="beforeInteractive">
-          {JSON.stringify(schema)}
-        </Script>
-      ))}
       <main className="min-h-screen pt-20">
         <section className="py-20 md:py-32 bg-gradient-to-br from-primary/10 via-secondary/5 to-accent/10 relative overflow-hidden">
           {/* Floating decorative elements */}
