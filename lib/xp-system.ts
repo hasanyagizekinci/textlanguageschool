@@ -338,7 +338,7 @@ export const STUDENT_BADGES: AchievementInfo[] = [
   { id: "elf", title: "Word Wizard", subtitle: "Expanding the language map", description: "Dil haritasını genişlet", icon: "Wand2", rarity: "rare", group: "explorer", category: "Vocabulary", studentName: "Elf", xpRequired: 800, level: "explorer" },
   { id: "rua", title: "Reading Voyager", subtitle: "Exploring meaning in context", description: "Bağlam içinde anlam keşfet", icon: "BookOpen", rarity: "rare", group: "explorer", category: "Reading", studentName: "Rua", xpRequired: 850, level: "explorer" },
   { id: "hunter", title: "Listening Tracker", subtitle: "Catching every detail", description: "Her detayı yakala", icon: "Headphones", rarity: "rare", group: "explorer", category: "Listening", studentName: "Hunter", xpRequired: 1000, level: "explorer" },
-  { id: "cati", title: "Structure Builder", subtitle: "Strengthening sentence structures", description: "Cümle yapılarını güçlendirmek", icon: "Building", rarity: "rare", group: "explorer", category: "Grammar", studentName: "Çeto", xpRequired: 1100, level: "explorer" },
+  { id: "cati", title: "Structure Builder", subtitle: "Strengthening sentence structures", description: "Cümle yapılarını güçlendirmek", icon: "Building", rarity: "rare", group: "explorer", category: "Grammar", studentName: "Çato", xpRequired: 1100, level: "explorer" },
   { id: "ugur", title: "Creative Eye", subtitle: "Designing language with style", description: "Dili tarzıyla tasarla", icon: "Sparkles", rarity: "rare", group: "explorer", category: "Design / Vocabulary", studentName: "Uğur", xpRequired: 1200, level: "explorer" },
 
   // Level 3 - Challenger (1-2 months of play)
