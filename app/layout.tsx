@@ -443,6 +443,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body className="antialiased">
         {children}
@@ -456,22 +457,7 @@ export default function RootLayout({
             gtag('config', 'AW-17923438419');
           `}
         </Script>
-        {/* JSON-LD Structured Data */}
-        <Script id="ld-organization" type="application/ld+json" strategy="beforeInteractive">
-          {JSON.stringify(jsonLdOrganization)}
-        </Script>
-        <Script id="ld-website" type="application/ld+json" strategy="beforeInteractive">
-          {JSON.stringify(jsonLdWebSite)}
-        </Script>
-        <Script id="ld-localbusiness" type="application/ld+json" strategy="beforeInteractive">
-          {JSON.stringify(jsonLdLocalBusiness)}
-        </Script>
-        <Script id="ld-breadcrumb" type="application/ld+json" strategy="beforeInteractive">
-          {JSON.stringify(jsonLdBreadcrumb)}
-        </Script>
-        <Script id="ld-faq" type="application/ld+json" strategy="beforeInteractive">
-          {JSON.stringify(jsonLdFAQ)}
-        </Script>
+
         <FloatingWhatsApp />
         <BackToTop />
         <ExitIntentPopup />
