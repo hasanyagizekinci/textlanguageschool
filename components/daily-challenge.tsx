@@ -247,6 +247,29 @@ const DAILY_POOL: DailyQuestion[] = [
   { type: "Frazal Fiil", question: "'Account for' ne demek?", options: ["Hesap açmak", "Saymak", "Kapatmak", "Açıklamak/oluşturmak (oran)"], correct: 3 },
   { type: "Frazal Fiil", question: "'Phase out' ne demek?", options: ["Kademeli olarak kaldırmak", "Başlatmak", "Planlamak", "Faz değiştirmek"], correct: 0 },
   { type: "Frazal Fiil", question: "'Rule out' ne demek?", options: ["Yönetmek", "Dışlamak/elemek", "Kurallamak", "Düzenlemek"], correct: 1 },
+  // --- MORE KELIME ---
+  { type: "Kelime", question: "'Exacerbate' ne demek?", options: ["Kötüleştirmek/şiddetlendirmek", "İyileştirmek", "Düzeltmek", "Yavaşlatmak"], correct: 0 },
+  { type: "Kelime", question: "'Feasible' ne demek?", options: ["İmkansız", "Uygulanabilir/yapılabilir", "Pahalı", "Zor"], correct: 1 },
+  { type: "Kelime", question: "'Diminish' ne demek?", options: ["Artmak", "Büyümek", "Azalmak/küçülmek", "Pekiştirmek"], correct: 2 },
+  { type: "Kelime", question: "'Elicit' ne demek?", options: ["Seçmek", "Silmek", "Yasaklamak", "Ortaya çıkarmak/uyandırmak"], correct: 3 },
+  { type: "Kelime", question: "'Inherent' ne demek?", options: ["Doğasında var olan", "Dışarıdan gelen", "Geçici", "Yapay"], correct: 0 },
+  { type: "Kelime", question: "'Versatile' ne demek?", options: ["Sabit", "Çok yönlü/becerikli", "Tek amaçlı", "Sınırlı"], correct: 1 },
+  { type: "Kelime", question: "'Complacent' ne demek?", options: ["Endişeli", "Hırslı", "Kayıtsız/rehavete kapılmış", "Dikkatli"], correct: 2 },
+  { type: "Kelime", question: "'Unprecedented' ne demek?", options: ["Beklenen", "Sıradan", "Tekrarlanan", "Emsalsiz/benzeri görülmemiş"], correct: 3 },
+  // --- MORE GRAMER ---
+  { type: "Gramer", question: "Not until he arrived _____ the truth.", options: ["did we learn", "we learned", "we did learn", "learned we"], correct: 0 },
+  { type: "Gramer", question: "I wish I _____ more time to study.", options: ["have", "had", "will have", "am having"], correct: 1 },
+  { type: "Gramer", question: "He denied _____ the window.", options: ["to break", "break", "breaking", "broke"], correct: 2 },
+  { type: "Gramer", question: "Were it not for her help, I _____.", options: ["succeed", "succeeded", "will fail", "would have failed"], correct: 3 },
+  { type: "Gramer", question: "The harder you work, the _____ results you get.", options: ["better", "best", "good", "more good"], correct: 0 },
+  { type: "Gramer", question: "She insisted that he _____ on time.", options: ["comes", "be", "was", "is"], correct: 1 },
+  { type: "Gramer", question: "It's high time we _____ a decision.", options: ["make", "will make", "made", "making"], correct: 2 },
+  { type: "Gramer", question: "He acted as if he _____ everything.", options: ["knows", "is knowing", "will know", "knew"], correct: 3 },
+  // --- MORE KOLLOKASYON ---
+  { type: "Kollokasyon", question: "She _____ a fortune in the stock market.", options: ["made", "did", "got", "won"], correct: 0 },
+  { type: "Kollokasyon", question: "He _____ a grudge against his former boss.", options: ["made", "held", "kept", "did"], correct: 1 },
+  { type: "Kollokasyon", question: "They _____ the blame on the new manager.", options: ["made", "did", "placed", "got"], correct: 2 },
+  { type: "Kollokasyon", question: "The news _____ her by surprise.", options: ["made", "did", "held", "took"], correct: 3 },
 ]
 
 const QUESTIONS_PER_DAY = 10
