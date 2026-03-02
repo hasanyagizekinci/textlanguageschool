@@ -443,10 +443,13 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=Baloo+2:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       </head>
       <body className="antialiased">
         {children}
+        {/* JSON-LD Structured Data */}
+        <Script id="ld-json" type="application/ld+json" strategy="afterInteractive">
+          {JSON.stringify(jsonLd)}
+        </Script>
         {/* Google Tag (gtag.js) */}
         <Script src="https://www.googletagmanager.com/gtag/js?id=AW-17923438419" strategy="afterInteractive" />
         <Script id="gtag-init" strategy="afterInteractive">
