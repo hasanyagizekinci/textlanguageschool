@@ -21,6 +21,10 @@ export default function GirisPage() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     const supabase = createClient()
+    if (!supabase) {
+      setError("Supabase bağlantısı kurulamadı.")
+      return
+    }
     setIsLoading(true)
     setError(null)
 

@@ -47,6 +47,7 @@ export function Navigation() {
   // Check auth state
   useEffect(() => {
     const supabase = createClient()
+    if (!supabase) return
     supabase.auth.getUser().then(({ data: { user } }) => {
       if (user) {
         setIsLoggedIn(true)
@@ -57,6 +58,7 @@ export function Navigation() {
 
   async function handleLogout() {
     const supabase = createClient()
+    if (!supabase) return
     await supabase.auth.signOut()
     setIsLoggedIn(false)
     setIsTeacher(false)

@@ -43,6 +43,7 @@ export default function LiderlikPage() {
     async function load() {
       setLoading(true)
       const supabase = createClient()
+      if (!supabase) { setLoading(false); return }
 
       let query
       if (tab === "genel") {

@@ -77,8 +77,7 @@ export default function OgretmenPage() {
   const router = useRouter()
   const supabase = createClient()
 
-  const [loading, setLoading] = useState(true)
-  const [teacherPlayerId, setTeacherPlayerId] = useState<string | null>(null)
+  const [loading, setLoading] = useState(true)  const [teacherPlayerId, setTeacherPlayerId] = useState<string | null>(null)
   const [tab, setTab] = useState<Tab>("genel")
 
   // Data
@@ -129,6 +128,7 @@ export default function OgretmenPage() {
   // Auth
   useEffect(() => {
     async function init() {
+      if (!supabase) { router.push("/"); return }
       const { data: { user } } = await supabase.auth.getUser()
       if (!user || user.email !== TEACHER_EMAIL) { router.push("/"); return }
       const { data: player } = await supabase

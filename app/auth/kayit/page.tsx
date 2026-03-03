@@ -11,7 +11,6 @@ import { Eye, EyeOff, ArrowLeft } from "lucide-react"
 
 export default function KayitPage() {
   const router = useRouter()
-  const supabase = createClient()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
@@ -22,6 +21,13 @@ export default function KayitPage() {
     e.preventDefault()
     setError("")
     setLoading(true)
+
+    const supabase = createClient()
+    if (!supabase) {
+      setError("Supabase bağlantısı kurulamadı.")
+      setLoading(false)
+      return
+    }
 
     const { data, error: signUpError } = await supabase.auth.signUp({
       email,
