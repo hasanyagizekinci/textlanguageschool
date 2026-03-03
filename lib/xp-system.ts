@@ -218,6 +218,7 @@ async function getPlayerId(): Promise<string | null> {
   try {
     const { createClient } = await import("@/lib/supabase/client")
     const supabase = createClient()
+    if (!supabase) return null
     const { data: { user } } = await supabase.auth.getUser()
     if (user) {
       const { data: player } = await supabase.from("players").select("id").eq("auth_id", user.id).single()
@@ -236,6 +237,7 @@ async function syncXpToDb(totalXp: number, streak: number) {
     if (!playerId) return
     const { createClient } = await import("@/lib/supabase/client")
     const supabase = createClient()
+    if (!supabase) return
     await supabase.from("players").update({
       total_xp: totalXp, current_streak: streak,
     }).eq("id", playerId)
@@ -251,6 +253,7 @@ export async function saveQuizResult(quizType: string, xpEarned: number, score?:
     if (!playerId) return
     const { createClient } = await import("@/lib/supabase/client")
     const supabase = createClient()
+    if (!supabase) return
     await supabase.from("quiz_results").insert({
       player_id: playerId,
       quiz_type: quizType,
