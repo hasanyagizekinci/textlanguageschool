@@ -21,8 +21,9 @@ export function ExitIntentPopup() {
 
     // Check if user is logged in -- don't annoy them
     const supabase = createClient()
-    supabase.auth.getUser().then(({ data: { user } }) => {
-      if (user) {
+
+    const checkAndActivate = (isLoggedIn: boolean) => {
+      if (isLoggedIn) {
         sessionStorage.setItem("exitPopupShown", "true")
         return
       }
@@ -54,7 +55,16 @@ export function ExitIntentPopup() {
         document.removeEventListener("mouseleave", handleMouseLeave)
         document.removeEventListener("visibilitychange", handleVisibilityChange)
       }
-    })
+    }
+
+    if (!supabase) {
+      // Supabase not configured, treat as not logged in
+      checkAndActivate(false)
+    } else {
+      supabase.auth.getUser().then(({ data: { user } }) => {
+        checkAndActivate(!!user)
+      })
+    }
 
     return () => {
       cleanupRef.current?.()

@@ -21,6 +21,7 @@ export function HomeLeaderboard() {
   useEffect(() => {
     async function load() {
       const supabase = createClient()
+      if (!supabase) return
       const { data } = await supabase
         .from("leaderboard_overall")
         .select("player_id, nickname, total_xp, current_streak, rank")
