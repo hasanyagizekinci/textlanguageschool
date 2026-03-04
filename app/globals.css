@@ -371,4 +371,39 @@
   a, button, [role="button"] {
     -webkit-tap-highlight-color: transparent;
   }
+
+  /* Scooter Ride game animations */
+  @keyframes scooter-bob-kf {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-3px); }
+  }
+  @keyframes scooter-wheel-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  @keyframes scooter-sparkle-pop {
+    0% { transform: scale(0); opacity: 1; }
+    60% { transform: scale(1.5); opacity: 0.8; }
+    100% { transform: scale(0.5); opacity: 0; }
+  }
+  @keyframes scooter-snowflake-melt {
+    0% { opacity: 1; transform: scale(1) translateY(0); }
+    50% { opacity: 0.7; transform: scale(0.8) translateY(4px); }
+    100% { opacity: 0; transform: scale(0.3) translateY(10px); }
+  }
+  .scooter-bob {
+    animation: scooter-bob-kf 1.2s ease-in-out infinite;
+  }
+  .scooter-wheel {
+    transform-origin: center;
+    animation: scooter-wheel-spin 1s linear infinite;
+  }
+  .scooter-snowflake-melt {
+    animation: scooter-snowflake-melt 0.8s ease-out forwards;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .scooter-bob { animation: none; }
+    .scooter-wheel { animation: none; }
+    .scooter-snowflake-melt { animation: none; opacity: 0; }
+  }
 }

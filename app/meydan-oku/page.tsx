@@ -39,6 +39,7 @@ import { GrammarCards } from "@/components/grammar-cards"
 import { FlashcardGame } from "@/components/flashcard-game"
 import { WordMatch } from "@/components/word-match"
 import { SpeakingQuiz } from "@/components/speaking-quiz"
+import { ScooterRide } from "@/components/scooter-ride"
 
 // ---- Challenge game definitions ----
 type GameId = string
@@ -73,6 +74,7 @@ const CHALLENGE_GAMES: ChallengeGame[] = [
   { id: "flashcard", label: "Kelime Kartları", desc: "Flashcard ile kelime öğren", icon: Zap, color: "text-yellow-600", bg: "bg-yellow-50", accent: "border-yellow-200 hover:border-yellow-300" },
   { id: "match", label: "Kelime Eşleştir", desc: "İngilizce-Türkçe eşle", icon: Shuffle, color: "text-fuchsia-600", bg: "bg-fuchsia-50", accent: "border-fuchsia-200 hover:border-fuchsia-300" },
   { id: "reading", label: "Hızlı Okuma", desc: "Zamana karşı oku ve anla", icon: Timer, color: "text-stone-600", bg: "bg-stone-50", accent: "border-stone-200 hover:border-stone-300" },
+  { id: "scooter", label: "Scooter Ride", desc: "Cevapla, scooter'i sur!", icon: Zap, color: "text-blue-600", bg: "bg-blue-50", accent: "border-blue-200 hover:border-blue-300" },
 ]
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -96,6 +98,7 @@ const GAME_COMPONENTS: Record<string, ComponentType<any>> = {
   flashcard: FlashcardGame,
   match: WordMatch,
   reading: TimedReading,
+  scooter: ScooterRide,
 }
 
 // ---- Hub component (no ?d= param) ----

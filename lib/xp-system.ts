@@ -52,6 +52,7 @@ export const XP_REWARDS = {
   transform_correct: 5,
   blitz_complete: 18,
   blitz_high_score: 10,
+  scooter_ride_complete: 12,
   quizComplete: 12,
   daily_first_activity: 8,
   streak_bonus_3: 15,
