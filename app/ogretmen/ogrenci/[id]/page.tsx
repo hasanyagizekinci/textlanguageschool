@@ -60,7 +60,6 @@ export default function StudentDetailPage({ params }: { params: Promise<{ id: st
 
   useEffect(() => {
     async function init() {
-      if (!supabase) { router.push("/"); return }
       const { data: { user } } = await supabase.auth.getUser()
       if (!user || user.email !== TEACHER_EMAIL) { router.push("/"); return }
 

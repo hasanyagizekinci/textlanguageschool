@@ -1,7 +1,7 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 // fonts loaded via <link> tag in <head> for reliable deployment
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/next"
 import { FloatingWhatsApp } from "@/components/floating-whatsapp"
 import { ExitIntentPopup } from "@/components/exit-intent-popup"
 import { BackToTop } from "@/components/back-to-top"

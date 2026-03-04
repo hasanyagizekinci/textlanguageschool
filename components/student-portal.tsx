@@ -54,7 +54,6 @@ export function StudentPortal() {
   const supabase = createClient()
 
   const fetchData = useCallback(async (pid: string) => {
-    if (!supabase) return
     const { data: rankData } = await supabase
       .from("leaderboard_overall").select("rank").eq("player_id", pid).single()
     if (rankData) setRank(Number(rankData.rank))
@@ -111,11 +110,6 @@ export function StudentPortal() {
 
   useEffect(() => {
     async function init() {
-      if (!supabase) {
-        const pid = localStorage.getItem("tls_player_id")
-        if (pid) { setPlayerId(pid); fetchData(pid) }
-        return
-      }
       const { data: { user } } = await supabase.auth.getUser()
       if (user) {
         const { data: player } = await supabase.from("players").select("id").eq("auth_id", user.id).single()
@@ -128,7 +122,7 @@ export function StudentPortal() {
   }, [fetchData, supabase])
 
   async function handleSubmit(assignmentId: string, file: File) {
-    if (!playerId || !supabase) return
+    if (!playerId) return
     setUploading(assignmentId)
     const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_")
     const path = `${playerId}/${Date.now()}-${safeName}`
@@ -148,7 +142,6 @@ export function StudentPortal() {
   }
 
   function downloadFile(filePath: string, bucket: string, fileName: string) {
-    if (!supabase) return
     const { data: { publicUrl } } = supabase.storage.from(bucket).getPublicUrl(filePath)
     if (publicUrl) {
       const a = document.createElement("a")

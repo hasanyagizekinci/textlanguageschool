@@ -46,7 +46,6 @@ export async function getOrCreatePlayer(nickname: string): Promise<string> {
   if (existing) return existing
 
   const supabase = createClient()
-  if (!supabase) throw new Error("Supabase is not configured")
   const seed = Math.random().toString(36).substring(2, 8)
 
   const { data, error } = await supabase
@@ -65,7 +64,6 @@ export async function getOrCreatePlayer(nickname: string): Promise<string> {
 
 export async function linkAuthAccount(playerId: string, authId: string): Promise<void> {
   const supabase = createClient()
-  if (!supabase) return
 
   const { error } = await supabase
     .from("players")
@@ -77,7 +75,6 @@ export async function linkAuthAccount(playerId: string, authId: string): Promise
 
 export async function getPlayerByAuthId(authId: string) {
   const supabase = createClient()
-  if (!supabase) return null
 
   const { data } = await supabase
     .from("players")
@@ -90,7 +87,6 @@ export async function getPlayerByAuthId(authId: string) {
 
 export async function updatePlayerRole(playerId: string, role: "student" | "teacher") {
   const supabase = createClient()
-  if (!supabase) return
 
   const { error } = await supabase
     .from("players")
