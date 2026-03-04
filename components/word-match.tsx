@@ -40,7 +40,7 @@ const wordPairs: WordPair[] = [
   // Verbs
   { id: 21, english: "Achieve", turkish: "Başarmak" },
   { id: 22, english: "Improve", turkish: "Geliştirmek" },
-  { id: 23, english: "Consider", turkish: "Düşünmek" },
+  { id: 23, english: "Consider", turkish: "Düşünmek/Göz önünde bulundurmak" },
   { id: 24, english: "Require", turkish: "Gerektirmek" },
   { id: 25, english: "Establish", turkish: "Kurmak" },
   { id: 26, english: "Maintain", turkish: "Sürdürmek" },
@@ -66,7 +66,7 @@ const wordPairs: WordPair[] = [
   { id: 44, english: "Perspective", turkish: "Bakış açısı" },
   { id: 45, english: "Contribute", turkish: "Katkı sağlamak" },
   { id: 46, english: "Appropriate", turkish: "Uygun" },
-  { id: 47, english: "Distinguish", turkish: "Ayirt etmek" },
+  { id: 47, english: "Distinguish", turkish: "Ayırt etmek" },
   { id: 48, english: "Circumstances", turkish: "Koşullar" },
   { id: 49, english: "Approximately", turkish: "Yaklaşık" },
   { id: 50, english: "Considerable", turkish: "Hatırı sayılır" },
@@ -85,7 +85,7 @@ const wordPairs: WordPair[] = [
   { id: 61, english: "Hypothesis", turkish: "Hipotez" },
   { id: 62, english: "Phenomenon", turkish: "Olgu" },
   { id: 63, english: "Methodology", turkish: "Yöntem" },
-  { id: 64, english: "Correlation", turkish: "İlişki" },
+  { id: 64, english: "Correlation", turkish: "İlişki/Bağıntı" },
   { id: 65, english: "Substantial", turkish: "Önemli miktarda" },
   // Medical words
   { id: 66, english: "Diagnosis", turkish: "Tanı" },
@@ -94,11 +94,11 @@ const wordPairs: WordPair[] = [
   { id: 69, english: "Prescription", turkish: "Reçete" },
   { id: 70, english: "Recovery", turkish: "İyileşme" },
   // More advanced
-  { id: 71, english: "Scrutinize", turkish: "İncelemek" },
+  { id: 71, english: "Scrutinize", turkish: "Dikkatle incelemek" },
   { id: 72, english: "Undermine", turkish: "Baltalamak" },
   { id: 73, english: "Exacerbate", turkish: "Kötüleştirmek" },
   { id: 74, english: "Facilitate", turkish: "Kolaylaştırmak" },
-  { id: 75, english: "Contemplate", turkish: "Düşünmek" },
+  { id: 75, english: "Contemplate", turkish: "Derin düşünmek" },
   { id: 76, english: "Vulnerable", turkish: "Savunmasız" },
   { id: 77, english: "Prominent", turkish: "Önde gelen" },
   { id: 78, english: "Fluctuate", turkish: "Dalgalanmak" },
@@ -120,16 +120,136 @@ const wordPairs: WordPair[] = [
   { id: 92, english: "Enthusiastic", turkish: "Hevesli" },
   { id: 93, english: "Overwhelmed", turkish: "Bunalmış" },
   { id: 94, english: "Resilient", turkish: "Dayanıklı" },
-  { id: 95, english: "Ambitious", turkish: "Hırslı" },
+  { id: 95, english: "Cautious", turkish: "Tedbirli" },
   // Academic
   { id: 96, english: "Evidence", turkish: "Kanıt" },
   { id: 97, english: "Theory", turkish: "Teori" },
   { id: 98, english: "Criteria", turkish: "Ölçüt" },
   { id: 99, english: "Analysis", turkish: "Analiz" },
-  { id: 100, english: "Conclusion", turkish: "Sonuç" },
+  { id: 100, english: "Conclusion", turkish: "Çıkarım" },
+  // Business & Finance
+  { id: 101, english: "Revenue", turkish: "Gelir" },
+  { id: 102, english: "Negotiate", turkish: "Pazarlık etmek" },
+  { id: 103, english: "Investment", turkish: "Yatırım" },
+  { id: 104, english: "Entrepreneur", turkish: "Girişimci" },
+  { id: 105, english: "Profit", turkish: "Kâr" },
+  { id: 106, english: "Budget", turkish: "Bütçe" },
+  { id: 107, english: "Bankruptcy", turkish: "İflas" },
+  { id: 108, english: "Inflation", turkish: "Enflasyon" },
+  { id: 109, english: "Demand", turkish: "Talep" },
+  { id: 110, english: "Supply", turkish: "Arz" },
+  // Technology
+  { id: 111, english: "Algorithm", turkish: "Algoritma" },
+  { id: 112, english: "Database", turkish: "Veritabanı" },
+  { id: 113, english: "Bandwidth", turkish: "Bant genişliği" },
+  { id: 114, english: "Encryption", turkish: "Şifreleme" },
+  { id: 115, english: "Interface", turkish: "Arayüz" },
+  { id: 116, english: "Artificial", turkish: "Yapay" },
+  { id: 117, english: "Device", turkish: "Cihaz" },
+  { id: 118, english: "Software", turkish: "Yazılım" },
+  { id: 119, english: "Hardware", turkish: "Donanım" },
+  { id: 120, english: "Network", turkish: "Ağ" },
+  // Nature & Science
+  { id: 121, english: "Ecosystem", turkish: "Ekosistem" },
+  { id: 122, english: "Species", turkish: "Tür" },
+  { id: 123, english: "Climate", turkish: "İklim" },
+  { id: 124, english: "Drought", turkish: "Kuraklık" },
+  { id: 125, english: "Earthquake", turkish: "Deprem" },
+  { id: 126, english: "Pollution", turkish: "Kirlilik" },
+  { id: 127, english: "Renewable", turkish: "Yenilenebilir" },
+  { id: 128, english: "Sustainable", turkish: "Sürdürülebilir" },
+  { id: 129, english: "Oxygen", turkish: "Oksijen" },
+  { id: 130, english: "Gravity", turkish: "Yerçekimi" },
+  // Law & Society
+  { id: 131, english: "Legislation", turkish: "Mevzuat" },
+  { id: 132, english: "Constitution", turkish: "Anayasa" },
+  { id: 133, english: "Democracy", turkish: "Demokrasi" },
+  { id: 134, english: "Justice", turkish: "Adalet" },
+  { id: 135, english: "Citizenship", turkish: "Vatandaşlık" },
+  { id: 136, english: "Authority", turkish: "Otorite" },
+  { id: 137, english: "Welfare", turkish: "Refah" },
+  { id: 138, english: "Immigration", turkish: "Göç" },
+  { id: 139, english: "Inequality", turkish: "Eşitsizlik" },
+  { id: 140, english: "Prejudice", turkish: "Önyargı" },
+  // Education
+  { id: 141, english: "Curriculum", turkish: "Müfredat" },
+  { id: 142, english: "Scholarship", turkish: "Burs" },
+  { id: 143, english: "Diploma", turkish: "Diploma" },
+  { id: 144, english: "Lecture", turkish: "Ders/Konferans" },
+  { id: 145, english: "Assignment", turkish: "Ödev" },
+  { id: 146, english: "Semester", turkish: "Dönem" },
+  { id: 147, english: "Literacy", turkish: "Okuryazarlık" },
+  { id: 148, english: "Graduate", turkish: "Mezun" },
+  { id: 149, english: "Faculty", turkish: "Fakülte" },
+  { id: 150, english: "Tuition", turkish: "Öğrenim ücreti" },
+  // Food & Kitchen
+  { id: 151, english: "Ingredient", turkish: "Malzeme" },
+  { id: 152, english: "Beverage", turkish: "İçecek" },
+  { id: 153, english: "Appetite", turkish: "İştah" },
+  { id: 154, english: "Cuisine", turkish: "Mutfak kültürü" },
+  { id: 155, english: "Nutrition", turkish: "Beslenme" },
+  { id: 156, english: "Flavor", turkish: "Lezzet" },
+  { id: 157, english: "Portion", turkish: "Porsiyon" },
+  { id: 158, english: "Recipe", turkish: "Tarif" },
+  { id: 159, english: "Spice", turkish: "Baharat" },
+  { id: 160, english: "Harvest", turkish: "Hasat" },
+  // Personality & Character
+  { id: 161, english: "Courageous", turkish: "Cesur" },
+  { id: 162, english: "Humble", turkish: "Alçakgönüllü" },
+  { id: 163, english: "Sincere", turkish: "Samimi" },
+  { id: 164, english: "Selfish", turkish: "Bencil" },
+  { id: 165, english: "Loyal", turkish: "Sadık" },
+  { id: 166, english: "Arrogant", turkish: "Kibirli" },
+  { id: 167, english: "Curious", turkish: "Meraklı" },
+  { id: 168, english: "Patient", turkish: "Sabırlı" },
+  { id: 169, english: "Jealous", turkish: "Kıskanç" },
+  { id: 170, english: "Honest", turkish: "Dürüst" },
+  // More phrasal verbs
+  { id: 171, english: "Set up", turkish: "Kurmak/Hazırlamak" },
+  { id: 172, english: "Look into", turkish: "Araştırmak" },
+  { id: 173, english: "Get along", turkish: "İyi geçinmek" },
+  { id: 174, english: "Take over", turkish: "Devralmak" },
+  { id: 175, english: "Hold on", turkish: "Beklemek/Dayanmak" },
+  { id: 176, english: "Make up", turkish: "Uydurmak/Barışmak" },
+  { id: 177, english: "Point out", turkish: "Belirtmek" },
+  { id: 178, english: "Bring up", turkish: "Gündeme getirmek" },
+  { id: 179, english: "Pass away", turkish: "Vefat etmek" },
+  { id: 180, english: "Show off", turkish: "Hava atmak" },
+  // Health & Body
+  { id: 181, english: "Immune", turkish: "Bağışık" },
+  { id: 182, english: "Allergy", turkish: "Alerji" },
+  { id: 183, english: "Surgery", turkish: "Ameliyat" },
+  { id: 184, english: "Vaccine", turkish: "Aşı" },
+  { id: 185, english: "Infection", turkish: "Enfeksiyon" },
+  { id: 186, english: "Fatigue", turkish: "Yorgunluk" },
+  { id: 187, english: "Therapy", turkish: "Terapi" },
+  { id: 188, english: "Chronic", turkish: "Kronik" },
+  { id: 189, english: "Remedy", turkish: "Çare" },
+  { id: 190, english: "Dose", turkish: "Doz" },
+  // Art & Culture
+  { id: 191, english: "Exhibition", turkish: "Sergi" },
+  { id: 192, english: "Masterpiece", turkish: "Başyapıt" },
+  { id: 193, english: "Heritage", turkish: "Miras" },
+  { id: 194, english: "Sculpture", turkish: "Heykel" },
+  { id: 195, english: "Symphony", turkish: "Senfoni" },
+  { id: 196, english: "Manuscript", turkish: "El yazması" },
+  { id: 197, english: "Tragedy", turkish: "Trajedi" },
+  { id: 198, english: "Genre", turkish: "Tür/Janr" },
+  { id: 199, english: "Portrait", turkish: "Portre" },
+  { id: 200, english: "Audience", turkish: "Seyirci" },
 ]
 
 const PAIRS_PER_SET = 6
+
+// Fisher-Yates shuffle for true randomness
+function shuffle<T>(array: T[]): T[] {
+  const arr = [...array]
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    ;[arr[i], arr[j]] = [arr[j], arr[i]]
+  }
+  return arr
+}
 
 export function WordMatch() {
   const [gamePairs, setGamePairs] = useState<WordPair[]>([])
@@ -152,7 +272,7 @@ export function WordMatch() {
 
   // Ensure no duplicate english or turkish strings end up in the same round
   const selectUniquePairs = (pool: WordPair[], count: number): WordPair[] => {
-    const shuffled = [...pool].sort(() => Math.random() - 0.5)
+    const shuffled = shuffle(pool)
     const result: WordPair[] = []
     const usedEn = new Set<string>()
     const usedTr = new Set<string>()
@@ -178,8 +298,8 @@ export function WordMatch() {
     }
 
     setGamePairs(selectedPairs)
-    setEnglishWords(selectedPairs.map(p => p.english).sort(() => Math.random() - 0.5))
-    setTurkishWords(selectedPairs.map(p => p.turkish).sort(() => Math.random() - 0.5))
+    setEnglishWords(shuffle(selectedPairs.map(p => p.english)))
+    setTurkishWords(shuffle(selectedPairs.map(p => p.turkish)))
     setSelectedEnglish(null)
     setSelectedTurkish(null)
     setMatched([])
@@ -212,8 +332,8 @@ export function WordMatch() {
     }
 
     setGamePairs(selectedPairs)
-    setEnglishWords(selectedPairs.map(p => p.english).sort(() => Math.random() - 0.5))
-    setTurkishWords(selectedPairs.map(p => p.turkish).sort(() => Math.random() - 0.5))
+    setEnglishWords(shuffle(selectedPairs.map(p => p.english)))
+    setTurkishWords(shuffle(selectedPairs.map(p => p.turkish)))
     setSelectedEnglish(null)
     setSelectedTurkish(null)
     setMatched([])
