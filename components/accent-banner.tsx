@@ -19,7 +19,7 @@ export function AccentBanner() {
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-semibold uppercase tracking-wider">
                 <Mic className="w-3.5 h-3.5" />
-                Yeni Quiz
+                Quiz
               </div>
 
               <h2 className="text-2xl sm:text-3xl font-serif font-bold text-foreground text-balance">

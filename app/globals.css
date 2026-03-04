@@ -405,5 +405,39 @@
     .scooter-bob { animation: none; }
     .scooter-wheel { animation: none; }
     .scooter-snowflake-melt { animation: none; opacity: 0; }
+    .sparkle-particle { animation: none; opacity: 0; }
+    .doodle-card { transition: none !important; }
+  }
+
+  /* Doodle card interaction */
+  .doodle-card {
+    transition: transform 140ms cubic-bezier(0.2,0.8,0.2,1), box-shadow 140ms cubic-bezier(0.2,0.8,0.2,1);
+  }
+  .doodle-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 0.04);
+  }
+  .doodle-card:active {
+    transform: scale(0.98);
+    box-shadow: none;
+    transition-duration: 80ms;
+  }
+
+  /* Section reveal */
+  .section-reveal {
+    animation: section-reveal-kf 180ms ease-out both;
+  }
+  @keyframes section-reveal-kf {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Sparkle burst for success */
+  @keyframes sparkle-burst {
+    0% { transform: rotate(var(--r, 0deg)) translateY(0) scale(1); opacity: 1; }
+    100% { transform: rotate(var(--r, 0deg)) translateY(-12px) scale(0); opacity: 0; }
+  }
+  .sparkle-particle {
+    animation: sparkle-burst 420ms ease-out forwards;
   }
 }

@@ -1,5 +1,7 @@
 import { Navigation } from "@/components/navigation"
 import { Hero } from "@/components/hero"
+import { FeaturedGame } from "@/components/featured-game"
+import { ContinuePractice } from "@/components/continue-practice"
 import { HomeAbout } from "@/components/home-about"
 import { HomeFeatures } from "@/components/home-features"
 import { InteractiveExercise } from "@/components/interactive-exercise"
@@ -23,6 +25,8 @@ export default function Home() {
       <Navigation />
       <main className="relative min-h-screen pt-20">
         <Hero />
+        <FeaturedGame />
+        <ContinuePractice />
         <HomeAbout />
         <HomeFeatures />
         <InteractiveExercise />

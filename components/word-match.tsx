@@ -13,125 +13,132 @@ interface WordPair {
   id: number
   english: string
   turkish: string
+  level: "A1" | "A2" | "B1" | "B2" | "C1"
 }
 
+type LevelFilter = "all" | "A1" | "A2" | "B1" | "B2" | "C1"
+
+const LEVELS: { value: LevelFilter; label: string; desc: string }[] = [
+  { value: "all", label: "Hepsi", desc: "Tum seviyeler" },
+  { value: "A1", label: "A1", desc: "Baslangic" },
+  { value: "A2", label: "A2", desc: "Temel" },
+  { value: "B1", label: "B1", desc: "Orta" },
+  { value: "B2", label: "B2", desc: "Orta-Ileri" },
+  { value: "C1", label: "C1", desc: "Ileri" },
+]
+
 const wordPairs: WordPair[] = [
-  // Adjectives
-  { id: 1, english: "Beautiful", turkish: "Güzel" },
-  { id: 2, english: "Important", turkish: "Önemli" },
-  { id: 3, english: "Difficult", turkish: "Zor" },
-  { id: 4, english: "Necessary", turkish: "Gerekli" },
-  { id: 5, english: "Different", turkish: "Farklı" },
-  { id: 6, english: "Possible", turkish: "Mümkün" },
-  { id: 7, english: "Successful", turkish: "Başarılı" },
-  { id: 8, english: "Dangerous", turkish: "Tehlikeli" },
-  { id: 9, english: "Expensive", turkish: "Pahalı" },
-  { id: 10, english: "Interesting", turkish: "İlginç" },
-  { id: 11, english: "Comfortable", turkish: "Rahat" },
-  { id: 12, english: "Available", turkish: "Mevcut" },
-  { id: 13, english: "Responsible", turkish: "Sorumlu" },
-  { id: 14, english: "Excellent", turkish: "Mükemmel" },
-  { id: 15, english: "Confident", turkish: "Kendine güvenen" },
-  { id: 16, english: "Reliable", turkish: "Güvenilir" },
-  { id: 17, english: "Ambitious", turkish: "Hırslı" },
-  { id: 18, english: "Sufficient", turkish: "Yeterli" },
-  { id: 19, english: "Obvious", turkish: "Açık/Belli" },
-  { id: 20, english: "Relevant", turkish: "İlgili" },
-  // Verbs
-  { id: 21, english: "Achieve", turkish: "Başarmak" },
-  { id: 22, english: "Improve", turkish: "Geliştirmek" },
-  { id: 23, english: "Consider", turkish: "Düşünmek" },
-  { id: 24, english: "Require", turkish: "Gerektirmek" },
-  { id: 25, english: "Establish", turkish: "Kurmak" },
-  { id: 26, english: "Maintain", turkish: "Sürdürmek" },
-  { id: 27, english: "Persuade", turkish: "İkna etmek" },
-  { id: 28, english: "Recognize", turkish: "Tanımak" },
-  { id: 29, english: "Determine", turkish: "Belirlemek" },
-  { id: 30, english: "Provide", turkish: "Sağlamak" },
-  // Nouns
-  { id: 31, english: "Achievement", turkish: "Başarı" },
-  { id: 32, english: "Opportunity", turkish: "Fırsat" },
-  { id: 33, english: "Experience", turkish: "Deneyim" },
-  { id: 34, english: "Environment", turkish: "Çevre" },
-  { id: 35, english: "Knowledge", turkish: "Bilgi" },
-  { id: 36, english: "Requirement", turkish: "Gereklilik" },
-  { id: 37, english: "Appointment", turkish: "Randevu" },
-  { id: 38, english: "Improvement", turkish: "Gelişme" },
-  { id: 39, english: "Consequence", turkish: "Sonuç" },
-  { id: 40, english: "Advantage", turkish: "Avantaj" },
-  // More words
-  { id: 41, english: "Compromise", turkish: "Uzlaşma" },
-  { id: 42, english: "Significant", turkish: "Kayda değer" },
-  { id: 43, english: "Inevitable", turkish: "Kaçınılmaz" },
-  { id: 44, english: "Perspective", turkish: "Bakış açısı" },
-  { id: 45, english: "Contribute", turkish: "Katkı sağlamak" },
-  { id: 46, english: "Appropriate", turkish: "Uygun" },
-  { id: 47, english: "Distinguish", turkish: "Ayirt etmek" },
-  { id: 48, english: "Circumstances", turkish: "Koşullar" },
-  { id: 49, english: "Approximately", turkish: "Yaklaşık" },
-  { id: 50, english: "Considerable", turkish: "Hatırı sayılır" },
-  // Phrasal verbs & idioms
-  { id: 51, english: "Give up", turkish: "Vazgeçmek" },
-  { id: 52, english: "Look forward to", turkish: "Dört gözle beklemek" },
-  { id: 53, english: "Carry out", turkish: "Gerçekleştirmek" },
-  { id: 54, english: "Come up with", turkish: "Bulmak/Üretmek" },
-  { id: 55, english: "Put off", turkish: "Ertelemek" },
-  { id: 56, english: "Turn down", turkish: "Reddetmek" },
-  { id: 57, english: "Run out of", turkish: "Tükenmek" },
-  { id: 58, english: "Break down", turkish: "Bozulmak" },
-  { id: 59, english: "Figure out", turkish: "Çözmek/Anlamak" },
-  { id: 60, english: "Bring about", turkish: "Neden olmak" },
-  // Academic words
-  { id: 61, english: "Hypothesis", turkish: "Hipotez" },
-  { id: 62, english: "Phenomenon", turkish: "Olgu" },
-  { id: 63, english: "Methodology", turkish: "Yöntem" },
-  { id: 64, english: "Correlation", turkish: "İlişki" },
-  { id: 65, english: "Substantial", turkish: "Önemli miktarda" },
-  // Medical words
-  { id: 66, english: "Diagnosis", turkish: "Tanı" },
-  { id: 67, english: "Symptom", turkish: "Belirti" },
-  { id: 68, english: "Treatment", turkish: "Tedavi" },
-  { id: 69, english: "Prescription", turkish: "Reçete" },
-  { id: 70, english: "Recovery", turkish: "İyileşme" },
-  // More advanced
-  { id: 71, english: "Scrutinize", turkish: "İncelemek" },
-  { id: 72, english: "Undermine", turkish: "Baltalamak" },
-  { id: 73, english: "Exacerbate", turkish: "Kötüleştirmek" },
-  { id: 74, english: "Facilitate", turkish: "Kolaylaştırmak" },
-  { id: 75, english: "Contemplate", turkish: "Düşünmek" },
-  { id: 76, english: "Vulnerable", turkish: "Savunmasız" },
-  { id: 77, english: "Prominent", turkish: "Önde gelen" },
-  { id: 78, english: "Fluctuate", turkish: "Dalgalanmak" },
-  { id: 79, english: "Encompass", turkish: "Kapsamak" },
-  { id: 80, english: "Meticulous", turkish: "Titiz" },
-  // Daily life & travel
-  { id: 81, english: "Receipt", turkish: "Fiş" },
-  { id: 82, english: "Luggage", turkish: "Bagaj" },
-  { id: 83, english: "Schedule", turkish: "Program" },
-  { id: 84, english: "Deadline", turkish: "Son tarih" },
-  { id: 85, english: "Colleague", turkish: "İş arkadaşı" },
-  { id: 86, english: "Departure", turkish: "Kalkış" },
-  { id: 87, english: "Currency", turkish: "Para birimi" },
-  { id: 88, english: "Grateful", turkish: "Minnettar" },
-  { id: 89, english: "Stubborn", turkish: "İnatçı" },
-  { id: 90, english: "Generous", turkish: "Cömert" },
-  // Emotions
-  { id: 91, english: "Anxious", turkish: "Endişeli" },
-  { id: 92, english: "Enthusiastic", turkish: "Hevesli" },
-  { id: 93, english: "Overwhelmed", turkish: "Bunalmış" },
-  { id: 94, english: "Resilient", turkish: "Dayanıklı" },
-  { id: 95, english: "Ambitious", turkish: "Hırslı" },
-  // Academic
-  { id: 96, english: "Evidence", turkish: "Kanıt" },
-  { id: 97, english: "Theory", turkish: "Teori" },
-  { id: 98, english: "Criteria", turkish: "Ölçüt" },
-  { id: 99, english: "Analysis", turkish: "Analiz" },
-  { id: 100, english: "Conclusion", turkish: "Sonuç" },
+  // A1 - Basic everyday words
+  { id: 1, english: "Beautiful", turkish: "Guzel", level: "A1" },
+  { id: 2, english: "Important", turkish: "Onemli", level: "A1" },
+  { id: 3, english: "Difficult", turkish: "Zor", level: "A1" },
+  { id: 4, english: "Different", turkish: "Farkli", level: "A1" },
+  { id: 5, english: "Expensive", turkish: "Pahali", level: "A1" },
+  { id: 6, english: "Interesting", turkish: "Ilginc", level: "A1" },
+  { id: 7, english: "Comfortable", turkish: "Rahat", level: "A1" },
+  { id: 8, english: "Dangerous", turkish: "Tehlikeli", level: "A1" },
+  { id: 9, english: "Knowledge", turkish: "Bilgi", level: "A1" },
+  { id: 10, english: "Experience", turkish: "Deneyim", level: "A1" },
+  { id: 11, english: "Receipt", turkish: "Fis", level: "A1" },
+  { id: 12, english: "Luggage", turkish: "Bagaj", level: "A1" },
+  { id: 13, english: "Schedule", turkish: "Program", level: "A1" },
+  { id: 14, english: "Generous", turkish: "Comert", level: "A1" },
+  { id: 15, english: "Stubborn", turkish: "Inatci", level: "A1" },
+  { id: 16, english: "Grateful", turkish: "Minnettar", level: "A1" },
+  { id: 17, english: "Anxious", turkish: "Endiseli", level: "A1" },
+  { id: 18, english: "Give up", turkish: "Vazgecmek", level: "A1" },
+  // A2 - Elementary
+  { id: 19, english: "Necessary", turkish: "Gerekli", level: "A2" },
+  { id: 20, english: "Possible", turkish: "Mumkun", level: "A2" },
+  { id: 21, english: "Successful", turkish: "Basarili", level: "A2" },
+  { id: 22, english: "Excellent", turkish: "Mukemmel", level: "A2" },
+  { id: 23, english: "Available", turkish: "Mevcut", level: "A2" },
+  { id: 24, english: "Responsible", turkish: "Sorumlu", level: "A2" },
+  { id: 25, english: "Improve", turkish: "Gelistirmek", level: "A2" },
+  { id: 26, english: "Achieve", turkish: "Basarmak", level: "A2" },
+  { id: 27, english: "Provide", turkish: "Saglamak", level: "A2" },
+  { id: 28, english: "Recognize", turkish: "Tanimak", level: "A2" },
+  { id: 29, english: "Achievement", turkish: "Basari", level: "A2" },
+  { id: 30, english: "Opportunity", turkish: "Firsat", level: "A2" },
+  { id: 31, english: "Environment", turkish: "Cevre", level: "A2" },
+  { id: 32, english: "Advantage", turkish: "Avantaj", level: "A2" },
+  { id: 33, english: "Deadline", turkish: "Son tarih", level: "A2" },
+  { id: 34, english: "Colleague", turkish: "Is arkadasi", level: "A2" },
+  { id: 35, english: "Departure", turkish: "Kalkis", level: "A2" },
+  { id: 36, english: "Currency", turkish: "Para birimi", level: "A2" },
+  { id: 37, english: "Put off", turkish: "Ertelemek", level: "A2" },
+  { id: 38, english: "Break down", turkish: "Bozulmak", level: "A2" },
+  // B1 - Intermediate
+  { id: 39, english: "Confident", turkish: "Kendine guvenen", level: "B1" },
+  { id: 40, english: "Reliable", turkish: "Guvenilir", level: "B1" },
+  { id: 41, english: "Ambitious", turkish: "Hirsli", level: "B1" },
+  { id: 42, english: "Sufficient", turkish: "Yeterli", level: "B1" },
+  { id: 43, english: "Obvious", turkish: "Acik/Belli", level: "B1" },
+  { id: 44, english: "Relevant", turkish: "Ilgili", level: "B1" },
+  { id: 45, english: "Consider", turkish: "Dusunmek", level: "B1" },
+  { id: 46, english: "Require", turkish: "Gerektirmek", level: "B1" },
+  { id: 47, english: "Establish", turkish: "Kurmak", level: "B1" },
+  { id: 48, english: "Maintain", turkish: "Surdurmek", level: "B1" },
+  { id: 49, english: "Persuade", turkish: "Ikna etmek", level: "B1" },
+  { id: 50, english: "Determine", turkish: "Belirlemek", level: "B1" },
+  { id: 51, english: "Requirement", turkish: "Gereklilik", level: "B1" },
+  { id: 52, english: "Appointment", turkish: "Randevu", level: "B1" },
+  { id: 53, english: "Improvement", turkish: "Gelisme", level: "B1" },
+  { id: 54, english: "Consequence", turkish: "Sonuc", level: "B1" },
+  { id: 55, english: "Enthusiastic", turkish: "Hevesli", level: "B1" },
+  { id: 56, english: "Resilient", turkish: "Dayanikli", level: "B1" },
+  { id: 57, english: "Look forward to", turkish: "Dort gozle beklemek", level: "B1" },
+  { id: 58, english: "Carry out", turkish: "Gerceklestirmek", level: "B1" },
+  { id: 59, english: "Come up with", turkish: "Bulmak/Uretmek", level: "B1" },
+  { id: 60, english: "Turn down", turkish: "Reddetmek", level: "B1" },
+  { id: 61, english: "Figure out", turkish: "Cozmek/Anlamak", level: "B1" },
+  { id: 62, english: "Evidence", turkish: "Kanit", level: "B1" },
+  { id: 63, english: "Theory", turkish: "Teori", level: "B1" },
+  { id: 64, english: "Analysis", turkish: "Analiz", level: "B1" },
+  { id: 65, english: "Conclusion", turkish: "Sonuc/Vargı", level: "B1" },
+  // B2 - Upper Intermediate
+  { id: 66, english: "Compromise", turkish: "Uzlasma", level: "B2" },
+  { id: 67, english: "Significant", turkish: "Kayda deger", level: "B2" },
+  { id: 68, english: "Inevitable", turkish: "Kacinilmaz", level: "B2" },
+  { id: 69, english: "Perspective", turkish: "Bakis acisi", level: "B2" },
+  { id: 70, english: "Contribute", turkish: "Katki saglamak", level: "B2" },
+  { id: 71, english: "Appropriate", turkish: "Uygun", level: "B2" },
+  { id: 72, english: "Distinguish", turkish: "Ayirt etmek", level: "B2" },
+  { id: 73, english: "Circumstances", turkish: "Kosullar", level: "B2" },
+  { id: 74, english: "Approximately", turkish: "Yaklasik", level: "B2" },
+  { id: 75, english: "Considerable", turkish: "Hatiri sayilir", level: "B2" },
+  { id: 76, english: "Substantial", turkish: "Onemli miktarda", level: "B2" },
+  { id: 77, english: "Diagnosis", turkish: "Tani", level: "B2" },
+  { id: 78, english: "Symptom", turkish: "Belirti", level: "B2" },
+  { id: 79, english: "Treatment", turkish: "Tedavi", level: "B2" },
+  { id: 80, english: "Prescription", turkish: "Recete", level: "B2" },
+  { id: 81, english: "Recovery", turkish: "Iyilesme", level: "B2" },
+  { id: 82, english: "Vulnerable", turkish: "Savunmasiz", level: "B2" },
+  { id: 83, english: "Prominent", turkish: "Onde gelen", level: "B2" },
+  { id: 84, english: "Overwhelmed", turkish: "Bunalmis", level: "B2" },
+  { id: 85, english: "Run out of", turkish: "Tukenmek", level: "B2" },
+  { id: 86, english: "Bring about", turkish: "Neden olmak", level: "B2" },
+  { id: 87, english: "Criteria", turkish: "Olcut", level: "B2" },
+  // C1 - Advanced
+  { id: 88, english: "Hypothesis", turkish: "Hipotez", level: "C1" },
+  { id: 89, english: "Phenomenon", turkish: "Olgu", level: "C1" },
+  { id: 90, english: "Methodology", turkish: "Yontem", level: "C1" },
+  { id: 91, english: "Correlation", turkish: "Iliski/Korelasyon", level: "C1" },
+  { id: 92, english: "Scrutinize", turkish: "Incelemek", level: "C1" },
+  { id: 93, english: "Undermine", turkish: "Baltalamak", level: "C1" },
+  { id: 94, english: "Exacerbate", turkish: "Kotulestirmek", level: "C1" },
+  { id: 95, english: "Facilitate", turkish: "Kolaylastirmak", level: "C1" },
+  { id: 96, english: "Contemplate", turkish: "Derin dusunmek", level: "C1" },
+  { id: 97, english: "Fluctuate", turkish: "Dalgalanmak", level: "C1" },
+  { id: 98, english: "Encompass", turkish: "Kapsamak", level: "C1" },
+  { id: 99, english: "Meticulous", turkish: "Titiz", level: "C1" },
 ]
 
 const PAIRS_PER_SET = 6
 
 export function WordMatch() {
+  const [selectedLevel, setSelectedLevel] = useState<LevelFilter>("all")
+  const [gameStarted, setGameStarted] = useState(false)
   const [gamePairs, setGamePairs] = useState<WordPair[]>([])
   const [englishWords, setEnglishWords] = useState<string[]>([])
   const [turkishWords, setTurkishWords] = useState<string[]>([])
@@ -150,6 +157,11 @@ export function WordMatch() {
   const [bestStreak, setBestStreak] = useState(0)
   const [lastMatchAnimation, setLastMatchAnimation] = useState<string | null>(null)
 
+  const getFilteredPairs = () => {
+    if (selectedLevel === "all") return wordPairs
+    return wordPairs.filter(p => p.level === selectedLevel)
+  }
+
   // Ensure no duplicate english or turkish strings end up in the same round
   const selectUniquePairs = (pool: WordPair[], count: number): WordPair[] => {
     const shuffled = [...pool].sort(() => Math.random() - 0.5)
@@ -167,15 +179,17 @@ export function WordMatch() {
   }
 
   const startGame = () => {
-    const available = wordPairs.filter(p => !usedIds.has(p.id))
+    const pool = getFilteredPairs()
+    const available = pool.filter(p => !usedIds.has(p.id))
 
     let selectedPairs: WordPair[]
     if (available.length < PAIRS_PER_SET) {
       setUsedIds(new Set())
-      selectedPairs = selectUniquePairs(wordPairs, PAIRS_PER_SET)
+      selectedPairs = selectUniquePairs(pool, PAIRS_PER_SET)
     } else {
       selectedPairs = selectUniquePairs(available, PAIRS_PER_SET)
     }
+    setGameStarted(true)
 
     setGamePairs(selectedPairs)
     setEnglishWords(selectedPairs.map(p => p.english).sort(() => Math.random() - 0.5))
@@ -201,12 +215,13 @@ export function WordMatch() {
     setTotalMatches(prev => prev + matched.length)
     setCurrentSet(prev => prev + 1)
 
-    const available = wordPairs.filter(p => !newUsedIds.has(p.id))
+    const pool = getFilteredPairs()
+    const available = pool.filter(p => !newUsedIds.has(p.id))
 
     let selectedPairs: WordPair[]
     if (available.length < PAIRS_PER_SET) {
       setUsedIds(new Set())
-      selectedPairs = selectUniquePairs(wordPairs, PAIRS_PER_SET)
+      selectedPairs = selectUniquePairs(pool, PAIRS_PER_SET)
     } else {
       selectedPairs = selectUniquePairs(available, PAIRS_PER_SET)
     }
@@ -231,7 +246,7 @@ export function WordMatch() {
     setUsedIds(new Set())
     setCopied(false)
     setBestStreak(0)
-    startGame()
+    setGameStarted(false)
   }
 
   const shareResult = async () => {
@@ -253,11 +268,6 @@ export function WordMatch() {
       setTimeout(() => setCopied(false), 2000)
     }
   }
-
-  useEffect(() => {
-    startGame()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   useEffect(() => {
     if (selectedEnglish && selectedTurkish) {
@@ -304,8 +314,44 @@ export function WordMatch() {
     setSelectedTurkish(word === selectedTurkish ? null : word)
   }
 
-  const remainingPairs = wordPairs.length - usedIds.size - gamePairs.length
+  const remainingPairs = getFilteredPairs().length - usedIds.size - gamePairs.length
   const progress = (matched.length / PAIRS_PER_SET) * 100
+
+  if (!gameStarted) {
+    return (
+      <div className="py-6">
+        <div className="flex items-center gap-2 mb-4">
+          <Link2 className="w-5 h-5 text-violet-600" />
+          <h3 className="font-serif text-lg">Kelime Eslestirme</h3>
+        </div>
+        <p className="text-sm text-muted-foreground mb-4">Seviyeni sec ve eslestirmeye basla!</p>
+        <div className="grid grid-cols-3 gap-2 mb-6">
+          {LEVELS.map(l => (
+            <button
+              key={l.value}
+              onClick={() => setSelectedLevel(l.value)}
+              className={cn(
+                "rounded-xl border-2 p-3 text-center transition-all",
+                selectedLevel === l.value
+                  ? "border-violet-400 bg-violet-50 text-violet-700 shadow-sm"
+                  : "border-border bg-background hover:border-violet-300 hover:bg-violet-50/50"
+              )}
+            >
+              <div className="font-bold text-sm">{l.label}</div>
+              <div className="text-[10px] text-muted-foreground">{l.desc}</div>
+              <div className="text-[10px] text-muted-foreground mt-0.5">
+                {l.value === "all" ? wordPairs.length : wordPairs.filter(p => p.level === l.value).length} kelime
+              </div>
+            </button>
+          ))}
+        </div>
+        <Button onClick={() => startGame()} className="w-full bg-violet-600 hover:bg-violet-700 text-white">
+          <Zap className="w-4 h-4 mr-2" />
+          Basla
+        </Button>
+      </div>
+    )
+  }
 
   return (
     <div className="py-6">
@@ -313,7 +359,10 @@ export function WordMatch() {
       <div className="flex items-center justify-between mb-2">
         <div className="flex items-center gap-2">
           <Link2 className="w-5 h-5 text-violet-600" />
-          <h3 className="font-serif text-lg">Eşleştirme</h3>
+          <h3 className="font-serif text-lg">Eslestirme</h3>
+          {selectedLevel !== "all" && (
+            <span className="text-[10px] bg-violet-100 text-violet-700 px-1.5 py-0.5 rounded-full font-medium">{selectedLevel}</span>
+          )}
         </div>
         <div className="flex items-center gap-3 text-sm text-muted-foreground">
           {streak >= 2 && (

@@ -1,9 +1,25 @@
+"use client"
+
+import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Sparkles, Swords, LogIn, Zap, BookOpen } from "lucide-react"
+import { Sparkles, Swords, LogIn, Zap, BookOpen, User, ChevronDown, Trophy, LogOut } from "lucide-react"
+import { createClient } from "@/lib/supabase/client"
 
 export function Hero() {
+  const [user, setUser] = useState<{ email?: string; nickname?: string } | null>(null)
+
+  useEffect(() => {
+    const supabase = createClient()
+    supabase.auth.getUser().then(({ data: { user: u } }) => {
+      if (u) {
+        const nick = u.user_metadata?.nickname || u.email?.split("@")[0] || "Kullanıcı"
+        setUser({ email: u.email, nickname: nick })
+      }
+    })
+  }, [])
+
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Subtle gradient bg */}
@@ -42,33 +58,68 @@ export function Hero() {
 
           {/* CTA Buttons */}
           <div className="animate-in fade-in slide-in-from-bottom-4 duration-700 delay-300 w-full max-w-md mx-auto space-y-4">
-            <Button size="lg" className="w-full text-base px-8 rounded-xl shadow-lg hover:shadow-xl transition-all h-13 font-semibold" asChild>
-              <Link href="/auth/giris" className="flex items-center justify-center gap-2.5">
-                <LogIn className="w-5 h-5" />
-                {"Giri\u015f Yap / Kay\u0131t Ol"}
-              </Link>
-            </Button>
-
-            <div className="grid grid-cols-3 gap-2.5">
-              <Button size="lg" variant="outline" className="text-sm px-3 rounded-xl border-2 hover:border-primary/40 transition-all h-12 font-semibold" asChild>
-                <Link href="/demo-ders" className="flex flex-col items-center gap-0.5">
-                  <BookOpen className="w-4 h-4 text-primary" />
-                  <span className="text-[11px]">Demo Ders</span>
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" className="text-sm px-3 rounded-xl border-2 hover:border-secondary/40 transition-all h-12 font-semibold" asChild>
-                <Link href="/#pratik" className="flex flex-col items-center gap-0.5">
-                  <Sparkles className="w-4 h-4 text-secondary" />
-                  <span className="text-[11px]">{"Quiz \u00c7\u00f6z"}</span>
-                </Link>
-              </Button>
-              <Button size="lg" variant="outline" className="text-sm px-3 rounded-xl border-2 hover:border-amber-400/40 transition-all h-12 font-semibold" asChild>
-                <Link href="/meydan-oku" className="flex flex-col items-center gap-0.5">
-                  <Swords className="w-4 h-4 text-amber-500" />
-                  <span className="text-[11px]">Meydan Oku</span>
-                </Link>
-              </Button>
-            </div>
+            {user ? (
+              <>
+                {/* Logged in: profile pill */}
+                <div className="flex items-center justify-center gap-3">
+                  <Link href="/profil" className="doodle-card flex items-center gap-2.5 px-4 py-2.5 rounded-full border border-border/50 bg-card hover:bg-muted/50 transition-all">
+                    <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center">
+                      <User className="w-4 h-4 text-primary" />
+                    </div>
+                    <span className="text-sm font-semibold text-foreground">{"Merhaba, "}{user.nickname}</span>
+                  </Link>
+                </div>
+                <div className="grid grid-cols-3 gap-2.5">
+                  <Button size="lg" variant="outline" className="text-sm px-3 rounded-xl border-2 hover:border-primary/40 transition-all h-12 font-semibold" asChild>
+                    <Link href="/#pratik" className="flex flex-col items-center gap-0.5">
+                      <Sparkles className="w-4 h-4 text-primary" />
+                      <span className="text-[11px]">{"Quiz \u00c7\u00f6z"}</span>
+                    </Link>
+                  </Button>
+                  <Button size="lg" variant="outline" className="text-sm px-3 rounded-xl border-2 hover:border-amber-400/40 transition-all h-12 font-semibold" asChild>
+                    <Link href="/meydan-oku" className="flex flex-col items-center gap-0.5">
+                      <Swords className="w-4 h-4 text-amber-500" />
+                      <span className="text-[11px]">Meydan Oku</span>
+                    </Link>
+                  </Button>
+                  <Button size="lg" variant="outline" className="text-sm px-3 rounded-xl border-2 hover:border-secondary/40 transition-all h-12 font-semibold" asChild>
+                    <Link href="/liderlik" className="flex flex-col items-center gap-0.5">
+                      <Trophy className="w-4 h-4 text-secondary" />
+                      <span className="text-[11px]">Liderlik</span>
+                    </Link>
+                  </Button>
+                </div>
+              </>
+            ) : (
+              <>
+                <Button size="lg" className="w-full text-base px-8 rounded-xl shadow-lg hover:shadow-xl transition-all h-13 font-semibold" asChild>
+                  <Link href="/auth/giris" className="flex items-center justify-center gap-2.5">
+                    <LogIn className="w-5 h-5" />
+                    {"Giri\u015f Yap / Kay\u0131t Ol"}
+                  </Link>
+                </Button>
+                <div className="grid grid-cols-3 gap-2.5">
+                  <Button size="lg" variant="outline" className="text-sm px-3 rounded-xl border-2 hover:border-primary/40 transition-all h-12 font-semibold" asChild>
+                    <Link href="/demo-ders" className="flex flex-col items-center gap-0.5">
+                      <BookOpen className="w-4 h-4 text-primary" />
+                      <span className="text-[11px]">Demo Ders</span>
+                    </Link>
+                  </Button>
+                  <Button size="lg" variant="outline" className="text-sm px-3 rounded-xl border-2 hover:border-secondary/40 transition-all h-12 font-semibold" asChild>
+                    <Link href="/#pratik" className="flex flex-col items-center gap-0.5">
+                      <Sparkles className="w-4 h-4 text-secondary" />
+                      <span className="text-[11px]">{"Quiz \u00c7\u00f6z"}</span>
+                    </Link>
+                  </Button>
+                  <Button size="lg" variant="outline" className="text-sm px-3 rounded-xl border-2 hover:border-amber-400/40 transition-all h-12 font-semibold" asChild>
+                    <Link href="/meydan-oku" className="flex flex-col items-center gap-0.5">
+                      <Swords className="w-4 h-4 text-amber-500" />
+                      <span className="text-[11px]">Meydan Oku</span>
+                    </Link>
+                  </Button>
+                </div>
+              </>
+            )}
 
             <div className="flex items-center justify-center gap-6 pt-2">
               <Link href="/hakkimda" className="text-sm text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4 decoration-border hover:decoration-foreground/30">

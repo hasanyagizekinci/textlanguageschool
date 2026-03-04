@@ -4,7 +4,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useState, useRef, useEffect } from 'react'
-import { Menu, X, ArrowRight, User, ChevronDown, BookOpen, Zap, Link2, BookMarked, Shuffle, Sparkles, Repeat, AlertTriangle, Timer, GraduationCap, LayoutGrid, Skull, Snowflake, Swords, LogOut, LogIn, Mic } from 'lucide-react'
+import { Menu, X, ArrowRight, User, ChevronDown, BookOpen, Zap, Link2, BookMarked, Shuffle, Sparkles, Repeat, AlertTriangle, Timer, GraduationCap, LayoutGrid, Skull, Snowflake, Swords, LogOut, LogIn, Mic, Trophy, Bike } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { createClient } from '@/lib/supabase/client'
 
@@ -19,21 +19,35 @@ const navItems = [
   { name: 'Blog', href: '/blog' },
 ]
 
-const quickQuizzes = [
-  { id: "accent", label: "Accent Challenge", icon: Mic, color: "text-primary", featured: true },
-  { id: "daily", label: "Günün Challenge'ı", icon: Timer, color: "text-rose-600" },
-  { id: "flashcard", label: "Kelime Kartları", icon: Zap, color: "text-amber-600" },
+interface NavQuizItem {
+  id: string
+  label: string
+  icon: React.ElementType
+  color: string
+  isNew?: boolean
+}
+
+const oyunlarGroup: NavQuizItem[] = [
+  { id: "wordle", label: "Wordle", icon: LayoutGrid, color: "text-emerald-600" },
+  { id: "hangman", label: "Adam Asmaca", icon: Skull, color: "text-purple-600" },
+  { id: "scooter", label: "Scooter Ride", icon: Bike, color: "text-blue-600", isNew: true },
   { id: "match", label: "Kelime Eşleştir", icon: Link2, color: "text-violet-600" },
+  { id: "snowchallenge", label: "Kar Fırtınası", icon: Snowflake, color: "text-sky-600" },
+]
+
+const challengeGroup: NavQuizItem[] = [
+  { id: "accent", label: "Accent Challenge", icon: Mic, color: "text-primary" },
+  { id: "meydan-oku", label: "Meydan Oku", icon: Swords, color: "text-amber-600" },
+  { id: "blitz", label: "Blitz", icon: Timer, color: "text-orange-600" },
+]
+
+const pratikGroup: NavQuizItem[] = [
+  { id: "flashcard", label: "Kelime Kartları", icon: Zap, color: "text-amber-600" },
   { id: "collocation", label: "Collocations", icon: Sparkles, color: "text-indigo-600" },
   { id: "grammar", label: "Gramer Kartları", icon: BookMarked, color: "text-pink-600" },
   { id: "sentence", label: "Cümle Kur", icon: Shuffle, color: "text-emerald-600" },
-  { id: "transform", label: "Cümle Dönüşümü", icon: Repeat, color: "text-fuchsia-600" },
-  { id: "error", label: "Hata Bul", icon: AlertTriangle, color: "text-orange-600" },
-  { id: "snowchallenge", label: "Çılga", icon: Snowflake, color: "text-sky-600" },
-  { id: "blitz", label: "Blitz Challenge", icon: Timer, color: "text-orange-600" },
+  { id: "daily", label: "Günün Challenge'ı", icon: Trophy, color: "text-rose-600" },
   { id: "exam", label: "Sınav Pratiği", icon: GraduationCap, color: "text-sky-600" },
-  { id: "wordle", label: "Wordle", icon: LayoutGrid, color: "text-emerald-600" },
-  { id: "hangman", label: "Adam Asmaca", icon: Skull, color: "text-purple-600" },
 ]
 
 export function Navigation() {
@@ -92,6 +106,11 @@ export function Navigation() {
   function scrollToQuiz(quizId: string) {
     setQuizDropdownOpen(false)
     setMobileMenuOpen(false)
+    // Scooter Ride lives in meydan-oku
+    if (quizId === "scooter") {
+      window.location.href = "/meydan-oku?game=scooter"
+      return
+    }
     const section = document.getElementById("pratik")
     if (section) {
       section.scrollIntoView({ behavior: "smooth" })
@@ -151,23 +170,9 @@ export function Navigation() {
               {quizDropdownOpen && (
                 <div className="absolute top-full right-0 mt-3 w-56 bg-card backdrop-blur-lg border border-border/50 rounded-lg shadow-lg shadow-black/[0.04] p-1.5 animate-in fade-in slide-in-from-top-2 duration-200 z-50">
                   <div className="max-h-[420px] overflow-y-auto practice-scroll">
-                    {/* Featured: Accent Challenge */}
-                    <button
-                      onClick={() => scrollToQuiz("accent")}
-                      className="w-full flex items-center gap-2.5 px-2.5 py-2.5 rounded-lg bg-primary/5 hover:bg-primary/10 active:bg-primary/15 transition-all duration-150 text-left group focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:outline-none mb-1"
-                    >
-                      <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                        <Mic className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
-                      </div>
-                      <div className="flex flex-col">
-                        <span className="text-[13px] font-semibold text-foreground group-hover:text-primary transition-colors">Accent Challenge</span>
-                        <span className="text-[10px] text-muted-foreground">{"Aksanını analiz et"}</span>
-                      </div>
-                      <span className="ml-auto text-[9px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-1.5 py-0.5 rounded">Yeni</span>
-                    </button>
-                    <div className="mx-2.5 my-1.5 h-px bg-border/40" />
-                    <p className="px-2.5 pt-1 pb-1.5 text-[10px] uppercase tracking-widest text-muted-foreground/60 font-semibold">Kelime & Kartlar</p>
-                    {quickQuizzes.slice(1, 6).map((q) => {
+                    {/* OYUNLAR */}
+                    <p className="px-2.5 pt-1.5 pb-1.5 text-[10px] uppercase tracking-widest text-muted-foreground/60 font-semibold">Oyunlar</p>
+                    {oyunlarGroup.map((q) => {
                       const Icon = q.icon
                       return (
                         <button
@@ -177,17 +182,19 @@ export function Navigation() {
                         >
                           <Icon className={`w-4 h-4 ${q.color} shrink-0 group-hover:scale-110 transition-transform`} />
                           <span className="text-[13px] text-foreground/80 group-hover:text-foreground">{q.label}</span>
+                          {q.isNew && <span className="ml-auto text-[9px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-1.5 py-0.5 rounded">Yeni</span>}
                         </button>
                       )
                     })}
                     <div className="mx-2.5 my-1.5 h-px bg-border/40" />
-                    <p className="px-2.5 pt-0.5 pb-1.5 text-[10px] uppercase tracking-widest text-muted-foreground/60 font-semibold">Cumle & Gramer</p>
-                    {quickQuizzes.slice(6, 9).map((q) => {
+                    {/* CHALLENGE */}
+                    <p className="px-2.5 pt-0.5 pb-1.5 text-[10px] uppercase tracking-widest text-muted-foreground/60 font-semibold">Challenge</p>
+                    {challengeGroup.map((q) => {
                       const Icon = q.icon
                       return (
                         <button
                           key={q.id}
-                          onClick={() => scrollToQuiz(q.id)}
+                          onClick={() => q.id === "meydan-oku" ? (window.location.href = "/meydan-oku") : scrollToQuiz(q.id)}
                           className="w-full flex items-center gap-2.5 px-2.5 py-2 rounded-lg hover:bg-muted/50 active:bg-muted transition-all duration-150 text-left group focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:outline-none"
                         >
                           <Icon className={`w-4 h-4 ${q.color} shrink-0 group-hover:scale-110 transition-transform`} />
@@ -196,8 +203,9 @@ export function Navigation() {
                       )
                     })}
                     <div className="mx-2.5 my-1.5 h-px bg-border/40" />
-                    <p className="px-2.5 pt-0.5 pb-1.5 text-[10px] uppercase tracking-widest text-muted-foreground/60 font-semibold">Challenge & Oyunlar</p>
-                    {quickQuizzes.slice(9).map((q) => {
+                    {/* PRATIK */}
+                    <p className="px-2.5 pt-0.5 pb-1.5 text-[10px] uppercase tracking-widest text-muted-foreground/60 font-semibold">Pratik</p>
+                    {pratikGroup.map((q) => {
                       const Icon = q.icon
                       return (
                         <button
@@ -343,24 +351,43 @@ export function Navigation() {
             </div>
 
             {/* Mobile Quiz Quick Access */}
-            <div className="pt-3 border-t border-border/50">
-              <p className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold mb-3">{"Hızlı Pratik"}</p>
-              {/* Featured: Accent Challenge */}
-              <button
-                onClick={() => scrollToQuiz("accent")}
-                className="w-full flex items-center gap-3 px-3 py-3 mb-2 rounded-xl bg-primary/5 border border-primary/20 hover:bg-primary/10 active:scale-[0.98] transition-all touch-manipulation"
-              >
-                <div className="w-9 h-9 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                  <Mic className="w-5 h-5 text-primary" />
-                </div>
-                <div className="flex flex-col text-left">
-                  <span className="text-sm font-semibold text-foreground">Accent Challenge</span>
-                  <span className="text-[11px] text-muted-foreground">{"Aksanını analiz et - 11 profil"}</span>
-                </div>
-                <span className="ml-auto text-[9px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-1.5 py-0.5 rounded">Yeni</span>
-              </button>
+            <div className="pt-3 border-t border-border/50 space-y-3">
+              <p className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">Oyunlar</p>
               <div className="grid grid-cols-3 gap-1.5">
-                {quickQuizzes.filter(q => q.id !== "accent").map((q) => {
+                {oyunlarGroup.map((q) => {
+                  const Icon = q.icon
+                  return (
+                    <button
+                      key={q.id}
+                      onClick={() => scrollToQuiz(q.id)}
+                      className="relative flex flex-col items-center gap-1 px-2 py-2.5 rounded-xl bg-muted/40 hover:bg-muted active:scale-[0.97] transition-all touch-manipulation"
+                    >
+                      <Icon className={`w-4 h-4 ${q.color} shrink-0`} />
+                      <span className="text-[10px] font-medium text-foreground/80 text-center leading-tight">{q.label}</span>
+                      {q.isNew && <span className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-primary" />}
+                    </button>
+                  )
+                })}
+              </div>
+              <p className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">Challenge</p>
+              <div className="grid grid-cols-3 gap-1.5">
+                {challengeGroup.map((q) => {
+                  const Icon = q.icon
+                  return (
+                    <button
+                      key={q.id}
+                      onClick={() => q.id === "meydan-oku" ? (setMobileMenuOpen(false), window.location.href = "/meydan-oku") : scrollToQuiz(q.id)}
+                      className="flex flex-col items-center gap-1 px-2 py-2.5 rounded-xl bg-muted/40 hover:bg-muted active:scale-[0.97] transition-all touch-manipulation"
+                    >
+                      <Icon className={`w-4 h-4 ${q.color} shrink-0`} />
+                      <span className="text-[10px] font-medium text-foreground/80 text-center leading-tight">{q.label}</span>
+                    </button>
+                  )
+                })}
+              </div>
+              <p className="text-[11px] uppercase tracking-wider text-muted-foreground font-semibold">Pratik</p>
+              <div className="grid grid-cols-3 gap-1.5">
+                {pratikGroup.map((q) => {
                   const Icon = q.icon
                   return (
                     <button

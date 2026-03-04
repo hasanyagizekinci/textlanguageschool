@@ -33,6 +33,7 @@ import {
   CalendarDays, Medal, Mic
 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { DoodleSparkle, DoodleStar } from "@/components/doodles"
 
 type ActivityId =
   | "word" | "flashcard" | "match" | "context" | "formation"
@@ -149,7 +150,10 @@ export function LearningTools() {
     setTimeout(() => { setActiveTab(null); setAnimatingOut(false) }, 200)
   }, [])
 
-  const selectActivity = useCallback((id: ActivityId) => setActiveTab(id), [])
+  const selectActivity = useCallback((id: ActivityId) => {
+    setActiveTab(id)
+    try { localStorage.setItem("last-played-game", id) } catch {}
+  }, [])
 
   const activeItem = activeTab ? allItems.find(t => t.id === activeTab) : null
   const ActiveComponent = activeTab ? COMPONENTS[activeTab] : null
@@ -177,9 +181,13 @@ export function LearningTools() {
         <div className="max-w-2xl mx-auto">
           {/* Section header */}
           <div className="text-center mb-14 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-3 text-balance tracking-tight">
-              Hemen Pratik Yapın
-            </h2>
+            <div className="relative inline-block">
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl mb-3 text-balance tracking-tight">
+                Hemen Pratik Yapın
+              </h2>
+              <DoodleSparkle size={16} className="absolute -top-2 -right-5 text-primary/40" />
+              <DoodleStar size={14} className="absolute -bottom-1 -left-6 text-primary/30" />
+            </div>
             <p className="text-muted-foreground max-w-sm mx-auto text-sm leading-relaxed">
               Kendi hızınızda, kendi yolunuzda.
             </p>
@@ -229,7 +237,6 @@ export function LearningTools() {
                 <div className="flex flex-col min-w-0">
                   <div className="flex items-center gap-2">
                     <span className="text-sm font-semibold text-foreground">Accent Challenge</span>
-                    <span className="text-[9px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-1.5 py-0.5 rounded">Yeni</span>
                   </div>
                   <span className="text-xs text-muted-foreground mt-0.5">{"Aksanını analiz et, kişiselleştirilmiş egzersizler al"}</span>
                 </div>
@@ -264,9 +271,7 @@ export function LearningTools() {
                         key={item.id}
                         onClick={() => selectActivity(item.id)}
                         className={cn(
-                          "relative text-left p-4 rounded-lg border border-border/50 bg-card transition-all duration-200 group touch-manipulation",
-                          "hover:border-border hover:shadow-sm hover:-translate-y-0.5",
-                          "active:translate-y-0 active:shadow-none active:scale-[0.98]",
+                          "doodle-card relative text-left p-4 rounded-lg border border-border/50 bg-card group touch-manipulation",
                           activeCat.items.length % 2 !== 0 && idx === activeCat.items.length - 1 && "col-span-2"
                         )}
                       >
